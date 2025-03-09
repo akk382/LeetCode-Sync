@@ -6,26 +6,19 @@ class Solution {
             length = colors.length + k - 1;
         }
 
-        long[] counterArray = new long[length];
-        counterArray[0] = 0L;
-
-        // Iterate through the colors until the end;
+        int counter = 0;
+        int groupCounter = 0;
         for (int i = 1; i < length; i++) {
             if (colors[(i - 1) % colors.length] != colors[i % colors.length]) {
-                counterArray[i] = counterArray[i - 1] + 1;
+                counter++;
+                if (counter >= k - 1) {
+                    groupCounter++;
+                }
             } else {
-                counterArray[i] = 0;
+                counter = 0;
             }
         }
 
-        int groupCounter = 0;
-
-        for (long i = 0; i < counterArray.length; i++) {
-            if (counterArray[(int) i] >= k - 1) {
-                groupCounter++;
-            }
-        }
-
-        return groupCounter;        
+        return groupCounter;       
     }
 }
