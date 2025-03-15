@@ -1,4 +1,5 @@
 class Solution {
+    // https://youtu.be/OHZqAc6h3Us
     public int minCapability(int[] nums, int k) {
         // find the min of the capability = min(nums);
 
@@ -16,6 +17,9 @@ class Solution {
         while (max >= min) {
             int mid = (max - min) / 2 + min;
 
+            // count the values that are less than the mid.
+            // Basically we are checking if we can form an array with atleast k size and <= mid;
+            // If we can form then we need to iterate on the left of the search range, else, we have to search on the right range.
             int count = 0;
             for (int i = 0; i < nums.length;) {
                 if (nums[i] <= mid) {
